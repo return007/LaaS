@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <title>{{ title }}</title>
+    <style type="text/css">
+.lb {
+    padding: 10%;
+    margin-top: -8%;
+}
+.lb #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.lb #tabs h6.section-title{
+    color: #eee;
+}
+.lb #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.lb .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.lb thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.lb a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+    </style>
+</head>
+
+<body>
+    <h2>{{ title }}</h2>
+    <section id="tabs" class="lb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            {% for p in pills %}
+                                <a class="nav-item nav-link {{ p['status'] }}" id="{{ p['pill_id'] }}" data-toggle="tab" href="#{{ p['nav_id'] }}" role="tab" aria-controls="{{ p['nav_id'] }}">{{ p['title'] }}</a>
+                            {% endfor %}
+                        </div>
+                    </nav>
+                    <div class="tab-content">
+                        {% for t in tables %}
+                            <div class="tab-pane fade {{ t['status'] }}" id="{{ t['nav_id'] }}" role="tabpanel" aria-labelledby="{{ t['pill_id'] }}">
+                                {{ t['table'] }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>

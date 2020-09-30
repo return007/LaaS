@@ -1,0 +1,20 @@
+<table class="table" cellspacing="0">
+    {% if data %}
+        <thead>
+            <tr>
+                {% for cell in data[0] %}
+                    <th>{{cell}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+    {% endif %}
+    <tbody>
+        {% for line in data[1:] %}
+            <tr>
+                {% for cell in line %}
+                    <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,3 +1,20 @@
 {
-    "title": "Leaderboard"
+    "title": "Leaderboard for Foo event",
+    "tabs": [
+        {
+            "title": "Scoreboard1",
+            "type": "ranking",
+            "highlight_winners": true,
+            "winners_count": 10,
+            "data": "scoreboard1.csv",
+            "event_status": "live",
+            "contest_link": "https://foobar.com/contest1"
+        },
+        {
+            "title": "Scoreboard2",
+            "type": "hall_of_fame",
+            "data": "scoreboard2.csv",
+            "event_status": "finished"
+        }
+    ]
 }

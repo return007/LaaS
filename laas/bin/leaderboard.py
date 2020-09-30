@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Process config files and CSV data to create beautiful static leaderboard pages
 which can be self hosted.
@@ -18,26 +19,31 @@ SRC_PATH = os.path.dirname(
 
 sys.path.append(os.path.join(SRC_PATH, 'src'))
 
-from _lass import create_leaderboard as cl
+from _laas import create_leaderboard as cl
 
 def main():
     """
     Process args and other things...
     """
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         '--create', action='store_true', dest='create',
         help='Create leaderboard action.'
     )
     parser.add_argument(
-        '--config', nargs=1, dest='config',
+        '--config', dest='config',
         help='Feed me the config file for your leaderboard view.'
+    )
+    parser.add_argument(
+        '--output', '-o', dest='output',
+        default=os.path.join(os.path.abspath('.'), 'index.html'),
+        help='Path to the output leaderboard file.'
     )
     args = parser.parse_args()
 
     if args.create:
         # Create leaderboard using the config file
-        cl(config)
+        cl(args.config, args.output)
 
 
 if __name__ == '__main__':
