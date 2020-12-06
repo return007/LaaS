@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath './atlaas/bin' start:app
